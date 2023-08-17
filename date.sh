@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "This is Executed on $(date)"
+DATE=$(date)
+echo "This is Executed on $DATE"
