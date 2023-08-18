@@ -35,7 +35,7 @@ then
      yum install $i -y &>>$logfile 
       validate $? "Installation of $i"
 else
-    echo "Package GIT is already Installed"
+    echo "Package $i is already Installed"
 fi    
 done
 
