@@ -12,12 +12,12 @@ normal=\e[0m
 #its our responsibility again to check installation is succuss or not
 validate(){
 if [ $1 -ne 0 ]
- then 
+then 
     echo "$2......FAILURE"
     exit 1
- else
+else
     echo "$2..... SUCCESS"   
- fi 
+fi 
 }
 
 if [ $user_id -ne 0 ]
