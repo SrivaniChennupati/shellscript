@@ -1,5 +1,8 @@
 #!/bin/bash
 user_id=$(id -u)
+script_name=$0
+DATE=$(date +%F-%H-%M-%S)
+logfile=/tmp/$script_name-$DATE.log
 
 validate(){
  
@@ -19,11 +22,11 @@ then
     exit 1
 fi
 
-yum install git -y
+yum install git -y &>>$logfile
 
 validate $? "Installation of GIT"
 
-yum install mysql -y
+yum install mysql -y &>>$logfile
 
 validate $? "Installation of MySQL"
 
