@@ -28,18 +28,19 @@ fi
 
 for i in $@
 do
-    yum install $i -y &>>$logfile
-    validate $? "Installation of $i"
-done
-
-yum list installed | grep git &>>$logfile
+yum list installed | grep $i &>>$logfile
 if [ $? -ne 0 ]
 then
-    echo "Package GIT is not Installed.Lets Install it..........."
-    yum install git -y
+    echo "Package $i is not Installed.Lets Install it..........."
+     yum install $i -y &>>$logfile 
+      validate $? "Installation of $i"
 else
     echo "Package GIT is already Installed"
 fi    
+done
+
+
+
 
 
 
