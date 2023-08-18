@@ -16,7 +16,7 @@ then
     echo -e "$2......$Red FAILURE $Normal"
     exit 1
 else
-    echo "$2.......$Green SUCCESS $Normal"
+    echo  -e "$2.......$Green SUCCESS $Normal"
 fi 
    
 
