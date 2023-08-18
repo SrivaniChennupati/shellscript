@@ -3,6 +3,9 @@ user_id=$(id -u)
 script_name=$0
 DATE=$(date +%F-%H-%M-%S)
 logfile=/tmp/$script_name-$DATE.log
+Red="\e[31m"
+Green="\e[32m"
+Normal="\e[0m"
 
 # Function to validate the package (git) is installed or not
 
@@ -10,10 +13,10 @@ validate(){
 
 if [ $1 -ne 0 ]
 then 
-    echo "$2......FAILURE"
+    echo -e "$2......$RED FAILURE $Normal"
     exit 1
 else
-    echo "$2.......SUCCESS"
+    echo "$2.......$GREEN SUCCESS $Normal"
 fi 
    
 
