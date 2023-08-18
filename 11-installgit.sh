@@ -1,5 +1,8 @@
 #!/bin/bash
 user_id=$(id -u)
+script_name=$0
+DATE=$(date +%F-%H-%M-%S)
+logfile=/tmp/$script_name-$DATE.log
 
 # Function to validate the package (git) is installed or not
 
@@ -24,7 +27,11 @@ fi
 
 yum install git -y
 
-validate $? "Installation of GIT"
+validate $? "Installation of GIT" &>>$logfile
+
+yum install mysql -y
+
+validate $? "Installation of MYSQL" &>>$logfile
 
 
 
