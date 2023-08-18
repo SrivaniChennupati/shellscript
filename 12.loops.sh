@@ -43,7 +43,7 @@ do
    package_status=$(rpm -q $i | awk -F "-" '{print $1F}')
 if [ $package_status == $i ]
 then
-    echo "Package $i ....... $Y already installed $N"
+    echo -e "Package $i ....... $Y already installed $N"
 else    
     echo "Package $i is not installed.Lets install it........"
     yum install $i -y &>>$logfile
