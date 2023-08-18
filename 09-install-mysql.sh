@@ -11,6 +11,8 @@ green=\e[32m
 normal=\e[0m
 #its our responsibility again to check installation is succuss or not
 validate(){
+    echo "Coming inside od the function"
+    
 if [ $1 -ne 0 ]
 then 
     echo "$2......FAILURE"
