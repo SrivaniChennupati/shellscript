@@ -41,7 +41,7 @@ fi
  for i in $@
 do 
    package_status=$(rpm -q $i | awk -F "-" '{print $1F}')
-if [ $package_status == $i ]
+if [ "$package_status" == "$i" ]
 then
     echo -e "Package $i ....... $Y already installed $N"
 else    
