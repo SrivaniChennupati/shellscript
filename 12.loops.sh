@@ -11,6 +11,7 @@ logfile=/tmp/$DATE-$script_name.log
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
+Y="\e[33m"
 
 # Function to validate the packages are installed or not
 
@@ -42,7 +43,7 @@ do
    package_status=$(rpm -q $i | awk -F "-" '{print $1F}')
 if [ $package_status == $i ]
 then
-    echo "Package $i is already installed"
+    echo "Package $i ....... $Y already installed $N"
 else    
     echo "Package $i is not installed.Lets install it........"
     yum install $i -y &>>$logfile
