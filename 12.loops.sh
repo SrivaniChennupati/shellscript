@@ -39,18 +39,14 @@ fi
  
  for i in $@
 do 
-
-Package_status=$(rpm -q $i)
- if [ $Package_status -ne package $i is not installed ]
+   package_status=$(rpm -q $i)
+if [ $package_status -ne "package $i is not installed" ]
 then
-    echo " $i is already installed"
- else   
-     echo "$i is not installed , lets install it.....
-
+    echo "Package $i is already installed"
+else    
+    echo "Package $i is not installed.Lets install it........"
     yum install $i -y &>>$logfile
-    
     validate $? "Installation of $i"
-
 done 
 
 
