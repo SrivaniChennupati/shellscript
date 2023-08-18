@@ -40,6 +40,7 @@ fi
  for i in $@
 do 
     yum install $i -y
+    validate $? "Installation of $i"
 
 done 
 
