@@ -1,8 +1,16 @@
 #!/bin/bash
 user_id=$(id -u)
+
+#date along with time stamp
 DATE=$(date +%F-%H-%M-%S)
+# $0 gives the script name
 script_name=$0
 logfile=/tmp/$DATE-$script_name.log
+
+# to add the colors
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
 
 # Function to validate the packages are installed or not
 
@@ -10,10 +18,10 @@ validate(){
 
 if [ $1 -ne 0 ]
 then
-        echo "$2.....FAILURE"
+        echo -e  "$2.....$R FAILURE $N"
         exit 1
 else
-        echo "$2......SUCCESS"
+        echo "$2......$G SUCCESS $N"
 fi        
 
 }
