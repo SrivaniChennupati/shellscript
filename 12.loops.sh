@@ -42,5 +42,5 @@ fi
 
 #calling validate function to check the packages installed or not
 
-validate $? "Installation of GIT"
+#validate $? "Installation of GIT"
 
