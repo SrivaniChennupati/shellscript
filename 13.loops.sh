@@ -32,6 +32,8 @@ do
     validate $? "Installation of $i"
 done
 
+$(yum list installed | grep git) &>>$logfile
+
 
 
     
