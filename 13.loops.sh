@@ -39,6 +39,7 @@ then
     yum install git -y
 else
     echo "Package GIT is already Installed"
+fi    
 
 
 
