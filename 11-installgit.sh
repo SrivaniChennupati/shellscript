@@ -30,6 +30,8 @@ fi
 
 yum install git -y &>>$logfile
 
+#calling the validate function to check packages are installed or not
+
 validate $? "Installation of GIT" 
 
 yum install mysql -y &>>$logfile

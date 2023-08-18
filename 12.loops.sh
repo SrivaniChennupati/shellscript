@@ -25,6 +25,7 @@ else
 fi        
 
 }
+ 
 
 #validate the Root user or not , if user id not 0 then exit
 
@@ -34,7 +35,16 @@ then
     exit 1
 fi
 
-yum install git -y &>>$logfile
+# all the arguments in $@
+for i in $@
+do 
+    yum install $i -y
+
+done  
+
+#yum install git -y &>>$logfile
+
+#calling validate function to check the packages installed or not
 
 validate $? "Installation of GIT"
 
