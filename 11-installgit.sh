@@ -24,6 +24,8 @@ fi
 
 yum install git -y
 
+validate $?
+
 
 
    
