@@ -28,14 +28,14 @@ fi
 
 for i in $@
 do
-yum list installed | grep $i &>>$logfile
+yum list installed | grep $i &>>/dev/null
 if [ $? -ne 0 ]
 then
     echo "Package $i is not Installed.Lets Install it..........."
      yum install $i -y &>>$logfile 
       validate $? "Installation of $i"
 else
-    echo "Package $i is already Installed"
+    echo "Package $i is .........$Y already Installed $N"
 fi    
 done
 
