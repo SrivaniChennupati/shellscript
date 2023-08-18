@@ -28,7 +28,7 @@ fi
 
 for i in $@
 do
-yum list installed | grep $i &>>/dev/null
+yum list installed $i &>>/dev/null
 if [ $? -ne 0 ]
 then
     echo "Package $i is not Installed.Lets Install it..........."
