@@ -1,6 +1,18 @@
 #!/bin/bash
 user_id=$(id -u)
 
+validate(){
+ 
+if [ $1 -ne 0 ]
+then
+    echo "$2..........FAILURE"
+    exit 1
+ else 
+    echo "$2..........SUCCESS"
+ fi   
+
+}
+
 if [ $user_id -ne 0 ]
 then
     echo "ERROR:This should be Executed with sudo access"
@@ -9,10 +21,10 @@ fi
 
 yum install git -y
 
-if [ $? -ne 0 ]
-then
-    echo "Installation of git..........FAILURE"
-    exit 1
- else 
-    echo "Installation of git..........SUCCESS"
- fi       
+validate $? "Installation of GIT"
+
+yum install mysql -y
+
+validate $? "Installation of MySQL"
+
+    
