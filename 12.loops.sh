@@ -36,11 +36,7 @@ then
 fi
 
 # all the arguments in $@
-for i in $@
-do 
-    yum install $i -y
-
-done  
+ 
 
 #yum install git -y &>>$logfile
 
