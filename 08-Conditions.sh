@@ -1,4 +1,5 @@
 #!/bin/bash
+#Check if the number is greater than 10
 number=$1
 
 if [ $number -gt 10 ]
