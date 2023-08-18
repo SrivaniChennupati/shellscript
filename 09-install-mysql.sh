@@ -6,14 +6,17 @@ user_id=$(id -u)
 DATE=$(date +%F-%H-%M-%S)
 script_name=$0
 logfile=/tmp/$script_name-$DATE.log
+Red=\e[31m
+green=\e[32m
+normal=\e[0m
 #its our responsibility again to check installation is succuss or not
 validate(){
 if [ $1 -ne 0 ]
  then 
-    echo "$2......FAILURE"
+    echo -e "$2......$Red FAILURE $normal"
     exit 1
  else
-    echo "$2..... SUCCESS"   
+    echo -e "$2..... $green SUCCESS $normal"   
  fi 
 }
 
