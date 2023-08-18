@@ -3,15 +3,19 @@ user_id=$(id -u)
 script_name=$0
 DATE=$(date +%F-%H-%M-%S)
 logfile=/tmp/$script_name-$DATE.log
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
+Y="\e[33m"
 
 validate(){
  
 if [ $1 -ne 0 ]
 then
-    echo "$2..........FAILURE"
+    echo -e  "$2..........$R FAILURE $N"
     exit 1
  else 
-    echo "$2..........SUCCESS"
+    echo -e  "$2..........$G SUCCESS $N"
  fi   
 
 }
