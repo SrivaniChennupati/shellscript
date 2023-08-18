@@ -39,7 +39,7 @@ fi
  
  for i in $@
 do 
-   package_status=$(rpm -q git | awk -F "-" '{print $1F}')
+   package_status=$(rpm -q $i | awk -F "-" '{print $1F}')
 if [ $package_status == $i ]
 then
     echo "Package $i is already installed"
