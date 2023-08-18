@@ -2,7 +2,10 @@
 #install mysql on the server 
 #if root user id (id -u) =0 , then install
 
-user_id = $(id -u)
+user_id=$(id -u)
+DATE=$(date +%F-%H-%M-%S)
+script_name=$0
+logfile=/tmp/$script_name-$DATE.log
 #its our responsibility again to check installation is succuss or not
 validate(){
 if [ $1 -ne 0 ]
@@ -21,4 +24,4 @@ then
 fi
  yum install mysql -y
 
-validate $? "Installation of MYSQL"
+validate $? "Installation of MYSQL" &>>$logfile
