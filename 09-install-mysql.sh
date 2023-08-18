@@ -12,7 +12,7 @@ normal=\e[0m
 #its our responsibility again to check installation is succuss or not
 validate(){
     echo "Coming inside od the function"
-    
+
 if [ $1 -ne 0 ]
 then 
     echo "$2......FAILURE"
@@ -27,6 +27,6 @@ then
     echo "ERROR : This command has to be run with superuser privileges"
     exit 1
 fi
- yum install mysql -y
+ yum install mysql -y &>>$logfile
 
-validate $? "Installation of MYSQL" &>>$logfile
+validate $? "Installation of MYSQL" 

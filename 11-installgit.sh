@@ -25,11 +25,11 @@ then
     exit 1
 fi
 
-yum install git -y
+yum install git -y &>>$logfile
 
 validate $? "Installation of GIT" 
 
-yum install mysql -y
+yum install mysql -y &>>$logfile
 
 validate $? "Installation of MYSQL"
 
