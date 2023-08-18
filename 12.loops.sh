@@ -40,7 +40,7 @@ fi
  for i in $@
 do 
    package_status=$(rpm -q git | awk -F "-" '{print $1F}')
-if [  expr $package_status -ne "package $i is not installed" ]
+if [ $package_status -eq $i ]
 then
     echo "Package $i is already installed"
 else    
