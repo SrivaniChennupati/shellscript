@@ -22,12 +22,12 @@ then
     exit 1
 fi
 
-yum install git -y &>>$logfile
+for i in $@
+do
+    yum install $i -y &>>$logfile
+    validate $? "Installation of $i"
+done
 
-validate $? "Installation of GIT"
 
-yum install mysql -y &>>$logfile
-
-validate $? "Installation of MySQL"
 
     
