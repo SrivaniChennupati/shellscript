@@ -13,10 +13,10 @@ normal=\e[0m
 validate(){
 if [ $1 -ne 0 ]
  then 
-    echo -e "$2......$Red FAILURE $normal"
+    echo "$2......FAILURE"
     exit 1
  else
-    echo -e "$2..... $green SUCCESS $normal"   
+    echo "$2..... SUCCESS"   
  fi 
 }
 
