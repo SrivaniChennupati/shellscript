@@ -47,6 +47,7 @@ else
     echo "Package $i is not installed.Lets install it........"
     yum install $i -y &>>$logfile
     validate $? "Installation of $i"
+ fi   
 done 
 
 
