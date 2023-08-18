@@ -33,6 +33,13 @@ do
 done
 
 yum list installed | grep git &>>$logfile
+if [ $? -ne 0 ]
+then
+    echo "Package GIT is not Installed.Lets Install it..........."
+    yum install git -y
+else
+    echo "Package GIT is already Installed"
+
 
 
 
