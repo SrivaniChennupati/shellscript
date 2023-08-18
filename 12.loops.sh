@@ -39,7 +39,7 @@ fi
  
  for i in $@
 do 
-    yum install $i -y &>>$logfile
+    yum install $i -y
 
 done 
 
