@@ -19,7 +19,7 @@ echo $files_to_delete
 
 while read line
 do
-    echo "Deleting $line"&>>$Logfiles_Directory
+    echo "Deleting $line" &>>$Logfiles_Directory
     rm -rf $line
 done <<< $files_to_delete
 
