@@ -17,4 +17,10 @@ echo $files_to_delete
 #before deleting I want to store those files in to some location for future reference
 #Read line by line of the logs
 
+while read line
+do
+    echo "Deleting $line"&>>$Logfiles_Directory
+    rm -rf $line
+done <<< $files_to_delete
+
 
