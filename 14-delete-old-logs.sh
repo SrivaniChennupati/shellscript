@@ -12,6 +12,7 @@ Logfiles_Directory=/home/centos/shellscript/shellscriptlogs
 Logfile=$Logfiles_Directory/$script_name-$DATE.log
 
 files_to_delete=$(find $App_Logs_Directory -name "*.log" -type f -mtime +14)
+echo $files_to_delete
 
 #before deleting I want to store those files in to some location for future reference
 #Read line by line of the logs
