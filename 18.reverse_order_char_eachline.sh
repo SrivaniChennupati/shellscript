@@ -8,5 +8,5 @@ while read line
 do  
     Reversed_line=$(echo "$line" | rev)
    echo "Reversed line :" $Reversed_line > $output_file
-done < $input_file   
+done <<< $input_file   
   
