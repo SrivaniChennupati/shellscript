@@ -7,7 +7,7 @@ read input_string
 
 reversed_string=$(echo "$input_string" | rev)
 
-if [ $reversed_string eq $input_string ]
+if [ "$reversed_string" = "$input_string" ]
 then
     echo "Given string is palindrome"
 
