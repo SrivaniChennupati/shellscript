@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Text_File_Path=/home/centos/shellscript
+Text_File_Path=/home/centos/shellscript/Testfile
 
 # checks if the input file exists.
 #tokenizes the text into words using tr.

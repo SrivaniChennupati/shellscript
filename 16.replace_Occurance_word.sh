@@ -6,7 +6,7 @@ new_word="Earth"
 output_file=/home/centos/shellscript/Testoutput
 
 
-if [ ! -f "$Input_file" ]
+if [ ! -f $Input_file ]
 then
     echo "File not found :" $Input_file
     exit 1

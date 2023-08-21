@@ -5,7 +5,7 @@ echo "Enter a String"
 read input_string
 
 
-reversed_string=$(echo "$input_string" | rev)
+reversed_string=$(echo $input_string | rev)
 
 if [ "$reversed_string" = "$input_string" ]
 then
