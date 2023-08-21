@@ -33,5 +33,5 @@ done <<< $Disk_usage
 
 #now we need to send an email
 
-echo "e HIGH DISK USAGE on $partition:$usage $(date)" | mail -s "High Disk Usage" srivanichennupati@gmail.com
+echo "e HIGH DISK USAGE on $partition : $usage $(date)" | mail -s "High Disk Usage" srivanichennupati@gmail.com
 
