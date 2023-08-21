@@ -12,7 +12,7 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
-message=""
+message=
 
 Disk_usage=$( df -hT | grep -vE 'tmpfs|Filesystem')
 Disk_Threshold_value=1
@@ -28,7 +28,7 @@ do
  if [ $usage -gt $Disk_Threshold_value ]
  then
  echo "HIGH DISK USAGE on "$partition : $usage
- message+="HIGH DISK USAGE on" $partition : $usage
+ message+="HIGH DISK USAGE on $partition : $usage \n"
 
  fi
 
