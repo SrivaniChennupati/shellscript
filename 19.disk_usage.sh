@@ -18,7 +18,7 @@ Disk_Threshold_value=1
 
 while IFS= read line
 do
- echo "Disk Usage:"$line
+ #echo "Disk Usage:"$line
  #This command will give us usage in number format for comparision
  usage=$(echo $line| awk '{print $6}'| cut -d % -f  1)
  #This command will give us the partition
