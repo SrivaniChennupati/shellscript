@@ -9,7 +9,7 @@ Text_File_Path=/home/centos/shellscript/Testfile
 #sorts the word-frequency pairs in descending order using sort -nr.
 #prints the sorted word frequency list.
 
-if [ ! -f $Text_File_Path ]
+if [ ! -f "$Text_File_Path" ]
 then
     echo "File not Found : " $Text_File_Path
     exit 1
