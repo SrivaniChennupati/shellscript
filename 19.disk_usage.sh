@@ -13,11 +13,20 @@ G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
 
-Disk_usage=$( df -hT | grep -vE 'tmpfs|Filesystem' | awk '{print $6}'| cut -d % -f  1)
+Disk_usage=$( df -hT | grep -vE 'tmpfs|Filesystem')
 Disk_Threshold_value=1
 
 while IFS= read line
 do
  echo "Disk Usage:"$line
+ #This command will give us usage in number format for comparision
+ usage=$(echo $line| awk '{print $6}'| cut -d % -f  1)
+ #This command will give us the partition
+ partition=$(echo $line | grep -vE 'tmpfs|Filesystem' | awk '{print $1}')
+
+ if [ $usage -gt $Disk_Threshold_value ]
+ then
+ echo "HIGH DISK USAGE on "$partition : $usage
+ fi
 
 done <<< $Disk_usage
