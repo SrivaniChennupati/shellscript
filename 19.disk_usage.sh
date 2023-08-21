@@ -27,8 +27,8 @@ do
 
  if [ $usage -gt $Disk_Threshold_value ]
  then
- #echo "HIGH DISK USAGE on "$partition : $usage
- message+="HIGH DISK USAGE on "$partition : $usage
+ echo "HIGH DISK USAGE on "$partition : $usage
+ message+="HIGH DISK USAGE on" $partition : $usage
 
  fi
 
