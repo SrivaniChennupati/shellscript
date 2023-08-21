@@ -12,6 +12,7 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
+message=""
 
 Disk_usage=$( df -hT | grep -vE 'tmpfs|Filesystem')
 Disk_Threshold_value=1
@@ -26,12 +27,14 @@ do
 
  if [ $usage -gt $Disk_Threshold_value ]
  then
- echo "HIGH DISK USAGE on "$partition : $usage
+ #echo "HIGH DISK USAGE on "$partition : $usage
+ message+="HIGH DISK USAGE on "$partition : $usage
+
  fi
 
 done <<< $Disk_usage
 
 #now we need to send an email
 
-echo "e HIGH DISK USAGE on $partition : $usage $(date)" | mail -s "High Disk Usage" srivanichennupati@gmail.com
+echo "$message $(date)" | mail -s "High Disk Usage" srivanichennupati@gmail.com
 
