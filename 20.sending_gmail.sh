@@ -17,16 +17,15 @@ then
     exit 1
 fi   
 
-yum history | grep update -y --exclude=kernel*
+repo_status=$(yum history | grep update -y --exclude=kernel* | awk '{print $10}')
 
-if [ $? -ne 0 ]
+if [ "$repo_status" = "Upgrade" ]
 then
-    echo "Updating the Yum Repo......."
-     yum update -y --exclude=kernel* &>>$Log_File
-
+echo "Yum Repo has updated already...."
+   
  else 
-
-    echo "Yum Repo has updated already...."
+     echo "Updating the Yum Repo......."
+     yum update -y --exclude=kernel* &>>$Log_File
 fi    
 
 
