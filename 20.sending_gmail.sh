@@ -25,7 +25,7 @@ then
 
 SERVICES(){
 
-    $(systemctl $1 postfix)&>>$Log_File
+    systemctl $1 postfix &>>$Log_File
     
 }
 
@@ -53,7 +53,7 @@ yum list installed postfix &>>$Log_File
 if [ $? -ne 0 ]
 then
     echo "POSTFIX is not Installed.Lets Install it......"
-    yum -y install postfix cyrus-sasl-plain mailx
+    yum -y install postfix cyrus-sasl-plain mailx &>>$Log_File
  else
 
  echo "POSTFIX is Already .....Installed"
