@@ -29,11 +29,11 @@ SERVICES(){
 
     case "$action" in
     restart)
-            systemctl restart postfix
+            $(systemctl restart postfix)
             ;;
         enable)
 
-            systemctl enable postfix
+            $(systemctl enable postfix)
             ;;
         *)
             echo "Usage: $0 {restart|enable}"
