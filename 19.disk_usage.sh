@@ -36,9 +36,9 @@ done <<< $Disk_usage
 
 #now we need to send an email
 
-#echo "$message $(date)" | mail -s "High Disk Usage" srivanichennupati@gmail.com
+echo "$message $(date)" | mail -s "High Disk Usage" srivanichennupati@gmail.com
 
 #sh mail.sh srivanichennupati@gmail.com "High Disk Usage" $message "Devops Team" "High Disk Usage"
 
-sh mail.sh "High Disk Usage" srivanichennupati@gmail.com
+#sh mail.sh srivanichennupati@gmail.com "High Disk Usage" $message "Devops Team" "High Disk Usage"
 
