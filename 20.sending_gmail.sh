@@ -25,8 +25,13 @@ then
 
 SERVICES(){
 
-    systemctl $3 postfix &>>$Log_File
-    
+    if [ $3 eq "restart" ]
+    then
+    echo " Restarting the POSTFIX Service......"
+    else if [ $3 eq "enable" ]
+    then
+    echo " Enabling the POSTFIX Service......"
+    fi 
 }
 
 if [ $user_id -ne 0 ]
