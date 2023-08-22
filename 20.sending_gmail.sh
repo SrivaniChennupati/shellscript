@@ -11,6 +11,18 @@ Y="\e[33m"
 
 user_id=$(id -u)
 
+VALIDATE(){
+ 
+ if [ $1 -ne 0 ]
+then
+        echo "$2 ....FAILURE"
+        exit 1
+    else 
+        echo "$2 ....SUCCESS" 
+ fi       
+
+}
+
 if [ $user_id -ne 0 ]
 then
     echo "ERROR : This command has to be run with superuser privileges"
@@ -26,6 +38,8 @@ echo "Yum Repo has updated already...."
  else 
      echo "Updating the Yum Repo......."
      yum update -y --exclude=kernel* &>>$Log_File
+
+     VALIDATE $? "Repo Updation"
 fi    
 
 
