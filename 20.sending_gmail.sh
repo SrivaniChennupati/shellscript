@@ -88,7 +88,11 @@ smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = noanonymous
 smtp_sasl_tls_security_options = noanonymous"
 
-echo "$content_to_append" >> vi /etc/postfix/main.cf
+#tee is in combination with sudo to write to a file
+
+echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
+
+echo "Configuration lines appended to /etc/postfix/main.cf"
 
 
 
