@@ -23,6 +23,12 @@ then
 
 }
 
+SERVICES(){
+
+    $(systemctl $1 postfix)&>>$Log_File
+    
+}
+
 if [ $user_id -ne 0 ]
 then
     echo "ERROR : This command has to be run with superuser privileges"
@@ -40,7 +46,22 @@ echo "Yum Repo has updated already...."
      yum update -y --exclude=kernel* &>>$Log_File
 
      VALIDATE $? "Repo Updation"
-fi    
+fi 
+
+yum list installed postfix &>>$Log_File
+
+if [ $? -ne 0 ]
+then
+    echo "POSTFIX is not Installed.Lets Install it......"
+    yum -y install postfix cyrus-sasl-plain mailx
+ else
+
+ echo "POSTFIX is Already .....Installed"
+fi
+
+SERVICES restart 
+
+
 
 
 
