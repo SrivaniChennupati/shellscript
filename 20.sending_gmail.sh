@@ -17,7 +17,7 @@ then
     exit 1
 fi   
 
-repo_status=$(yum history | grep update -y --exclude=kernel* | awk '{print $10}')
+repo_status=$(yum history | grep update -y --exclude=kernel* | awk '{print $10}'| sed -n '1P')
 
 if [ "$repo_status" = "Upgrade" ]
 then
