@@ -25,11 +25,11 @@ then
 
 SERVICES(){
 
-    if [ $3 == "restart" ]
+    if [ $3 eq "restart" ]
     then
     echo " Restarting the POSTFIX Service......"
     systemctl restart postfix &>>$Log_File
-     if [ $3 == "enable" ]
+     if [ $3 eq "enable" ]
     then
     echo " Enabling the POSTFIX Service......"
     systemctl enable postfix  &>>$Log_File
