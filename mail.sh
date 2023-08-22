@@ -13,5 +13,6 @@ ALERT_TYPE=$5
 #Body we needto prepare it using template
 #$fINAL_BODY=$(sed -e "s|Team_Name|$TEAM_NAME|g" -e "s|Alert_Type|$ALERT_TYPE|g" -e "s|MESSAGE|$BODY|" template.html)
 FINAL_BODY=$(sed -e "s|TEAM_NAME|$TEAM_NAME|g" -e "s|ALERT_TYPE|$ALERT_TYPE|g" -e "s|MESSAGE|$BODY|g" template.html)
+echo $FINAL_BODY
 #$fINAL_BODY=$(sed -e "s|Team_Name|Devops Team|g" -e "s|Alert_Type|Hard disk usage|g" -e "s|Message|$BODY|"  template.html)
 echo "$fINAL_BODY" | mail -s "$SUBJECT" "$TO_ADDRESS"
