@@ -28,11 +28,11 @@ SERVICES(){
     if [ "$3" == "restart" ]
     then
     echo " Restarting the POSTFIX Service......"
-   $(systemctl restart postfix) &>>$Log_File
+   systemctl restart postfix &>>$Log_File
      if [ "$3" == "enable" ]
      then
     echo " Enabling the POSTFIX Service......"
-    $(systemctl enable postfix) &>>$Log_File
+    systemctl enable postfix &>>$Log_File
     fi 
     fi
     
@@ -68,7 +68,7 @@ then
  echo "POSTFIX is Already .....Installed"
 fi
 
-SERVICES restart
+SERVICES restart enable
 
 
 
