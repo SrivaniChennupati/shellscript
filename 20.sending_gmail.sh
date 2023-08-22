@@ -25,7 +25,7 @@ then
 
 SERVICES(){
 
-    $(systemctl $1 postfix) &>>$Log_File
+    $(systemctl $3 postfix) &>>$Log_File
     
 }
 
