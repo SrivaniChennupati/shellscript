@@ -93,14 +93,21 @@ config_lines=(
 # Append each configuration line to main.cf using tee
 for line in "${config_lines[@]}"
 do
+ 
+  if [ grep -qF $line /etc/postfix/main.cf ]
+  then
+  echo "Line Already Exists: $line"
+  else 
+  echo "Adding the line : $line"
     echo "$line" | sudo tee -a /etc/postfix/main.cf &>>$Log_File
+   fi 
 done
 
 #tee is in combination with sudo to write to a file
 
 #echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
 
-#service postfix reload
+service postfix reload
 
 echo "Configuration lines appended to /etc/postfix/main.cf"
 
