@@ -25,15 +25,29 @@ then
 
 SERVICES(){
 
-   if [ "$3" == "restart" ]; then
-        echo "Restarting the POSTFIX Service..."
-        systemctl restart postfix &>> "$Log_File"
-        
-        if [ "$3" == "enable" ]; then
-            echo "Enabling the POSTFIX Service..."
-            systemctl enable postfix &>> "$Log_File"
-        fi
-    fi
+  #!/bin/bash
+
+manage_postfix() {
+    
+    action="$1"
+    
+    case "$action" in
+    restart)
+            systemctl restart postfix
+            ;;
+        enable)
+
+            systemctl enable postfix
+            ;;
+        *)
+            echo "Usage: $0 {restart|enable}"
+            ;;
+    esac
+}
+
+# Call the function with appropriate action
+manage_postfix "$1"
+
     
 }
 
@@ -67,7 +81,7 @@ then
  echo "POSTFIX is Already .....Installed"
 fi
 
-SERVICES restart 
+SERVICES "restart" 
 
 
 
