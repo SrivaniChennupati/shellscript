@@ -79,6 +79,17 @@ SERVICES "enable" &>>$Log_File
 
 VALIDATE $? "Enabling of POSTFIX is"
 
+vi /etc/postfix/main.cf 
+
+content_to_append="relayhost = [smtp.gmail.com]:587
+smtp_use_tls = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous"
+
+echo "$content_to_append" >> vi /etc/postfix/main.cf
+
 
 
 
