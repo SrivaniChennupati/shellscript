@@ -92,6 +92,8 @@ smtp_sasl_tls_security_options = noanonymous"
 
 echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
 
+service postfix reload
+
 echo "Configuration lines appended to /etc/postfix/main.cf"
 
 
