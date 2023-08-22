@@ -4,7 +4,8 @@
 
 TO_ADDRESS=$1
 SUBJECT=$2
-BODY=$3
+BODY=$(sed -e 's/[]\/$*.^[]/\\&/g' <<< $3)
+echo "escaped content: $BODY"
 TEAM_NAME=$4
 ALERT_TYPE=$5
 
@@ -12,11 +13,11 @@ ALERT_TYPE=$5
 #mail command
 #Body we needto prepare it using template
 
-FINAL_BODY=$(sed -e "s|TEAM_NAME|$TEAM_NAME|g" "template.html")
-#FINAL_BODY=$(sed -e "s|TEAM_NAME|$TEAM_NAME|g" -e "s|ALERT_TYPE|$ALERT_TYPE|g" -e "s|MESSAGE|$BODY|g" template.html)
+FINAL_BODY=$(sed -e "s|TEAM_NAME|$TEAM_NAME|g" -e "s|ALERT_TYPE|$ALERT_TYPE|g" -e "s|MESSAGE|$BODY|g" template.html)
 
 
-echo $FINAL_BODY
+#echo $FINAL_BODY
 
 
-echo "$fINAL_BODY" | mail -s "$SUBJECT" $TO_ADDRESS
+#echo "$fINAL_BODY" | mail -s "$SUBJECT" $TO_ADDRESS
+echo "$FINAL_BODY" | mail -s "$(echo -e "$SUBJECT\nContent-Type: text/html")" "$TO_ADDRESS"
