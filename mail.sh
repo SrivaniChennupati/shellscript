@@ -2,11 +2,11 @@
 
 #Anyone in our project can call this script with Arguements
 
-TO_ADDRESS="$1"
-SUBJECT="$2"
-BODY="$3"
-TEAM_NAME="$4"
-ALERT_TYPE="$5"
+TO_ADDRESS=$1
+SUBJECT=$2
+BODY=$3
+TEAM_NAME=$4
+ALERT_TYPE=$5
 
 
 #echo " all args :" $@
@@ -18,4 +18,6 @@ ALERT_TYPE="$5"
 FINAL_BODY=$(sed -e "s|TEAM_NAME|$TEAM_NAME|g" -e "s|ALERT_TYPE|$ALERT_TYPE|g" -e "s|MESSAGE|$BODY|g" template.html)
 echo $FINAL_BODY
 
-echo "$fINAL_BODY" | mail -s "$SUBJECT" $TO_ADDRESS
+#echo "$fINAL_BODY" | mail -s "$SUBJECT" $TO_ADDRESS
+
+echo "$FINAL_BODY" | mail -s "$SUBJECT" "$TO_ADDRESS"
