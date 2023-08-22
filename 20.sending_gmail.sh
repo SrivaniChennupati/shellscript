@@ -59,7 +59,7 @@ then
  echo "POSTFIX is Already .....Installed"
 fi
 
-SERVICES "restart"
+SERVICES restart
 
 
 
