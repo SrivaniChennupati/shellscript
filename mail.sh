@@ -18,6 +18,5 @@ ALERT_TYPE=$5
 FINAL_BODY=$(sed -e "s|Team_Name|$TEAM_NAME|g" -e "s|Alert_Type|$ALERT_TYPE|g" -e "s|Message|$BODY|g" template.html)
 echo $FINAL_BODY
 
-#echo "$fINAL_BODY" | mail -s "$SUBJECT" $TO_ADDRESS
 
 echo "$FINAL_BODY" | mail -s "$SUBJECT" "$TO_ADDRESS"
