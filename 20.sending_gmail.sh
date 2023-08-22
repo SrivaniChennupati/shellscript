@@ -73,7 +73,11 @@ fi
 
 SERVICES "restart"
 
-SERVICES "enable"
+VALIDATE $? "Restaring of POSTFIX is"
+
+SERVICES "enable" &>>$Log_File
+
+VALIDATE $? "Enabling of POSTFIX is"
 
 
 
