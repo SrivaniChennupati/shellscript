@@ -81,18 +81,30 @@ VALIDATE $? "Enabling of POSTFIX is"
 
 vi /etc/postfix/main.cf 
 
-content_to_append="relayhost = [smtp.gmail.com]:587
-smtp_use_tls = yes
-smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-smtp_sasl_security_options = noanonymous
-smtp_sasl_tls_security_options = noanonymous"
+config_lines=(
+    "relayhost = [smtp.gmail.com]:587"
+    "smtp_use_tls = yes"
+    "smtp_sasl_auth_enable = yes"
+    "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd"
+    "smtp_sasl_security_options = noanonymous"
+    "smtp_sasl_tls_security_options = noanonymous"
+)
+
+# Append each configuration line to main.cf using tee
+
+for line in "${config_lines[@]}"; 
+do
+    echo $line | sudo tee -a /etc/postfix/main.cf &>>$Log_File
+done
 
 #tee is in combination with sudo to write to a file
 
-echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
+#echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
 
-service postfix reload
+for $line in $content_to_append
+
+
+#service postfix reload
 
 echo "Configuration lines appended to /etc/postfix/main.cf"
 
