@@ -25,7 +25,7 @@ then
 
 SERVICES(){
 
-    systemctl $1 postfix &>>$Log_File
+    $(systemctl $1 postfix) &>>$Log_File
     
 }
 
@@ -59,7 +59,7 @@ then
  echo "POSTFIX is Already .....Installed"
 fi
 
-SERVICES restart 
+SERVICES "restart"
 
 
 
