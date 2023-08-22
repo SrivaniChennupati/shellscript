@@ -40,5 +40,5 @@ done <<< $Disk_usage
 
 #sh mail.sh srivanichennupati@gmail.com "High Disk Usage" $message "Devops Team" "High Disk Usage"
 
-sh mail.sh srivanichennupati@gmail.com "High Disk Usage" $message "Devops Team" "High Disk Usage"
+sh mail.sh srivanichennupati@gmail.com "HighDiskUsage" $message "DevopsTeam" "HighDiskUsage"
 
