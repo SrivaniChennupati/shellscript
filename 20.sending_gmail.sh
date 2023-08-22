@@ -73,6 +73,8 @@ fi
 
 SERVICES "restart"
 
+SERVICES "enable"
+
 
 
 
