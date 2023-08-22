@@ -7,6 +7,7 @@ SUBJECT=$2
 BODY=$3
 TEAM_NAME=$4
 ALERT_TYPE=$5
+input_file="template.html"
 
 #echo " all args :" $@
 #mail command
