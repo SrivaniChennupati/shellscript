@@ -25,12 +25,8 @@ then
 
 SERVICES(){
 
-  #!/bin/bash
-
-manage_postfix() {
-    
     action="$1"
-    
+
     case "$action" in
     restart)
             systemctl restart postfix
@@ -43,12 +39,6 @@ manage_postfix() {
             echo "Usage: $0 {restart|enable}"
             ;;
     esac
-}
-
-# Call the function with appropriate action
-manage_postfix "$1"
-
-    
 }
 
 if [ $user_id -ne 0 ]
@@ -81,7 +71,7 @@ then
  echo "POSTFIX is Already .....Installed"
 fi
 
-SERVICES "restart" 
+SERVICES "restart"
 
 
 
