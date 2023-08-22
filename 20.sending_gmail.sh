@@ -91,18 +91,14 @@ config_lines=(
 )
 
 # Append each configuration line to main.cf using tee
-
-for line in "${config_lines[@]}"; 
+for line in "${config_lines[@]}"
 do
-    echo $line | sudo tee -a /etc/postfix/main.cf &>>$Log_File
+    echo "$line" | sudo tee -a /etc/postfix/main.cf &>>$Log_File
 done
 
 #tee is in combination with sudo to write to a file
 
 #echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
-
-for $line in $content_to_append
-
 
 #service postfix reload
 
