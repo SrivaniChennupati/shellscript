@@ -94,7 +94,7 @@ config_lines=(
 for line in "${config_lines[@]}"
 do
  
-  if [ grep -qF $line /etc/postfix/main.cf ]
+  if [ grep -qF "$line" "/etc/postfix/main.cf" ]
   then
   echo "Line Already Exists: $line"
   else 
