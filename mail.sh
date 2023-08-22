@@ -7,7 +7,7 @@ SUBJECT=$2
 BODY=$3
 TEAM_NAME=$4
 ALERT_TYPE=$5
-input_file="template.html"
+
 
 #echo " all args :" $@
 #mail command
@@ -15,7 +15,7 @@ input_file="template.html"
 
 #FINAL_BODY=$(sed -e "s|Team_Name|$TEAM_NAME|g" -e "s|Alert_Type|$ALERT_TYPE|g" -e "s|Message|$BODY|g" template.html)
 
-FINAL_BODY=$(sed -e "s|Team_Name|Devops Team|g" -e "s|Alert_Type|High Disk Usgae|g" -e "s|Message|$BODY|g" template.html)
+FINAL_BODY=$(sed -e "s|Team_Name|"$TEAM_NAME"|g" -e "s|Alert_Type|High Disk Usgae|g" -e "s|Message|$BODY|g" template.html)
 echo $FINAL_BODY
 
 echo "$fINAL_BODY" | mail -s "$SUBJECT" $TO_ADDRESS
