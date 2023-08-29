@@ -9,6 +9,8 @@ G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
 
+
+
 user_id=$(id -u)
 
 validate(){
@@ -50,6 +52,25 @@ cat /home/centos/main.cf >> /etc/postfix/main.cf &>>$Log_File
 sed -i -e '$a\relayhost = [smtp.gmail.com]:587' -e '$a\smtp_use_tls = yes' -e '$a\smtp_sasl_auth_enable = yes' -e '$a\smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd' -e '$a\smtp_sasl_security_options = noanonymous' -e '$a\smtp_sasl_tls_security_options = noanonymous' /etc/postfix/main.cf
 
 validate $? "Appending the file"
+
+cp /home/centos/shellscript/sasl_passswd  /etc/postfix/sasl_passwd/sasl_passwd
+
+validate $? "Adding gmail Credentials for Authentication"
+
+postmap /etc/postfix/sasl_passwd 
+
+validate $? "Creating a Postfix lookup table"
+
+echo "This is a test mail & Date $(date)" | mail -s "message" read -p "Enter Gmail" 
+
+
+
+
+
+
+
+
+
 
 
 
