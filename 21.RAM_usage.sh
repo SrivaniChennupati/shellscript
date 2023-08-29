@@ -17,6 +17,7 @@ if [ $RAM_Usage -gt $RAM_threshold_value ]
 then
     echo " $R ERROR : HIGH RAM USAGE $N:$RAM_Usage"
     $message="High RAM Usage :$RAM_Usage"
+    echo $message
 fi    
 
 
