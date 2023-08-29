@@ -20,6 +20,7 @@ then
 fi    
 
 
-sh mail.sh srivanichennupati@gmail.com "High RAM Usage" $message "Devops Team" "High RAM Usage"
+#sh mail.sh srivanichennupati@gmail.com "High RAM Usage" $message "Devops Team" "High RAM Usage"
 
+echo "This is a test mail & Date $(date)" | mail -s $message srivanichennupati@gmail.com
 
