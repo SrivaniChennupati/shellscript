@@ -53,7 +53,7 @@ sed -i -e '$a\relayhost = [smtp.gmail.com]:587' -e '$a\smtp_use_tls = yes' -e '$
 
 validate $? "Appending the file"
 
-cp /home/centos/shellscript/sasl_passwd  /etc/postfix/sasl_passwd/sasl_passwd
+cp /home/centos/shellscript/sasl_passwd  /etc/postfix/sasl_passwd
 
 validate $? "Adding gmail Credentials for Authentication"
 
