@@ -61,9 +61,9 @@ postmap /etc/postfix/sasl_passwd
 
 validate $? "Creating a Postfix lookup table"
 
-read -p "Enter your email" a
+read -p "Enter your email : " a
 
-echo "This is a test mail & Date $(date)" | mail -s "message" $a
+echo "This is a test mail & Date $(date)" | mail -s "Sending mail Test Mail" $a
 
 
 
