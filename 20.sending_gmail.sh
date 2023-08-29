@@ -25,11 +25,11 @@ then
 
 if [ $user_id -ne 0 ]
 then
-    echo " $R ERROR:This should be Executed with sudo access $N"
+    echo  -e " $R ERROR:This should be Executed with sudo access $N"
     exit 1
 fi
 
- yum update -y --exclude=kernel* &>>$Log_File
+  yum update -y --exclude=kernel* &>>$Log_File
 
  validate $? "Updating yum repo"
 
@@ -46,6 +46,8 @@ systemctl enable postfix &>>$Log_File
 validate $? "Enabling Postfix"
 
 cat /home/centos/main.cf >> /etc/postfix/main.cf &>>$Log_File
+
+sed -i -e '$a\relayhost = [smtp.gmail.com]:587' -e '$a\smtp_use_tls = yes' -e '$a\smtp_sasl_auth_enable = yes' -e '$a\smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd' -e '$a\smtp_sasl_security_options = noanonymous' -e '$a\smtp_sasl_tls_security_options = noanonymous' /etc/postfix/main.cf
 
 validate $? "Appending the file"
 
