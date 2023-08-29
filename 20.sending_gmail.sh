@@ -11,105 +11,60 @@ Y="\e[33m"
 
 user_id=$(id -u)
 
-VALIDATE(){
+validate(){
  
  if [ $1 -ne 0 ]
 then
-        echo "$2 ....FAILURE"
+        echo  -e "$2 ....$R FAILURE $N"
         exit 1
     else 
-        echo "$2 ....SUCCESS" 
+        echo  -e "$2 ....$G SUCCESS $N" 
  fi       
 
 }
 
-SERVICES(){
-
-    action="$1"
-
-    case "$action" in
-    restart)
-            $(systemctl restart postfix)
-            ;;
-        enable)
-
-            $(systemctl enable postfix)
-            ;;
-        *)
-            echo "Usage: $0 {restart|enable}"
-            ;;
-    esac
-}
-
 if [ $user_id -ne 0 ]
 then
-    echo "ERROR : This command has to be run with superuser privileges"
+    echo " $R ERROR:This should be Executed with sudo access $N"
     exit 1
-fi   
-
-repo_status=$(yum history | grep update -y --exclude=kernel* | awk '{print $10}'| sed -n '1P')
-
-if [ "$repo_status" = "Upgrade" ]
-then
-echo "Yum Repo has updated already...."
-   
- else 
-     echo "Updating the Yum Repo......."
-     yum update -y --exclude=kernel* &>>$Log_File
-
-     VALIDATE $? "Repo Updation"
-fi 
-
-yum list installed postfix &>>$Log_File
-
-if [ $? -ne 0 ]
-then
-    echo "POSTFIX is not Installed.Lets Install it......"
-    yum -y install postfix cyrus-sasl-plain mailx &>>$Log_File
- else
-
- echo "POSTFIX is Already .....Installed"
 fi
 
-SERVICES "restart"
+ yum update -y --exclude=kernel* &>>$Log_File
 
-VALIDATE $? "Restaring of POSTFIX is"
+ validate $? "Updating yum repo"
 
-SERVICES "enable" &>>$Log_File
+ yum -y install postfix cyrus-sasl-plain mailx &>>$Log_File
 
-VALIDATE $? "Enabling of POSTFIX is"
+validate $? "Installing Postfix"
 
-vi /etc/postfix/main.cf 
+systemctl restart postfix &>>$Log_File
 
-config_lines=(
-    "relayhost = [smtp.gmail.com]:587"
-    "smtp_use_tls = yes"
-    "smtp_sasl_auth_enable = yes"
-    "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd"
-    "smtp_sasl_security_options = noanonymous"
-    "smtp_sasl_tls_security_options = noanonymous"
-)
+validate $? "Restaring Postfix"
 
-# Append each configuration line to main.cf using tee
-for line in "${config_lines[@]}"
-do
- 
-  if [ grep -qF "$line" "/etc/postfix/main.cf" ]
-  then
-  echo "Line Already Exists: $line"
-  else 
-  echo "Adding the line : $line"
-    echo "$line" | sudo tee -a /etc/postfix/main.cf &>>$Log_File
-   fi 
-done
+systemctl enable postfix &>>$Log_File
 
-#tee is in combination with sudo to write to a file
+validate $? "Enabling Postfix"
 
-#echo $content_to_append | sudo tee -a /etc/postfix/main.cf &>>$Log_File
+cat /home/centos/main.cf >> /etc/postfix/main.cf &>>$Log_File
 
-service postfix reload
+validate $? "Appending the file"
 
-echo "Configuration lines appended to /etc/postfix/main.cf"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
